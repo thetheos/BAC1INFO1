@@ -1,0 +1,5 @@
+variable: une boite dans laquelle on affecte une valeur (permet d'associer dynamiquement un nom à une valeur)
+valeur: une information, il en existe de plusieurs type
+data type: type de données. Donner un type à une données permet de la stocker plus facilement
+Instruction: chaque ligne de code est une instruction, une instruction provoque une action soit d'affectation, soit une opération
+expression: but de Retourner une valeur grace à une opération, fonction mathématique ou autre

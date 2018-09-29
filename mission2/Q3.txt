@@ -1,0 +1,4 @@
+i = i + 1 
+incrémente de 1 la valeur affectée à la variable i.
+Une notation simplifiée serait:
+i += 1
