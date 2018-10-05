@@ -1,0 +1,6 @@
+Fonction: Suite d'instruction qui retourne une valeur
+en tete: mot clé, nom, parametre, :
+documentation et spécification d'une fonction: Utilisation de docstring, juste après la déclaration de
+la fonction on écrit un commentaire """ """ et sera interprété comme docstring
+help(fonction) retourne le docstring
+Dans le corps de la fonction, les instructions sont éxécutées.
