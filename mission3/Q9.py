@@ -2,6 +2,16 @@
 Realised by Vanden Driessche Théo. Octobre 2018
 Turtle program who print the European flag following the normalized size format
 L=3/2 H , R_(stars) =  1/3 Heigt, R_(star) = 1/9 Height
+
+Pour la réalisation de ce programme j'ai découpé le drapeau suivant ce schéma:
+-base du drapeau
+-dodecagone régulier
+-étoile
+
+Plus d'autre fonction de positionnement afin que l'ensemble soit correcte.
+Conclusion: Le drapeau est dessiné grace a une suite de fonction se déroulant dans un certain ordre
+Bien que cet orde pourrait être différent
+
 """
 
 import turtle
