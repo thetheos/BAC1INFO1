@@ -226,14 +226,46 @@ def european_flag(width):
     drp_center(width)
 
 
+def luxembourg_flag(width):
+    """Trace le drapeau luxembourg de largeur width. Le rapport L/H = 3/2.
+    pre: 
+        `widht`: largeur du drapeau.
+        La tortue est positionnée à un sommet du drapeau
+        la tortue pointe vers le coté de la largeur du drapeau
+    post:
+        Le drapeau  est dessiné dans le quart supérier droit par rapport à la tortue
+        La tortue est de retour en position et orientation d'origine dans le coin inferieur gauche 
+      git  du drapeau
+    """
+    hv_three_color_flag(width,"Light sky blue","white","red","h")
+
+
+def french_flag(width):
+    """Trace le drapeau luxembourg de largeur width. Le rapport L/H = 3/2.
+    pre: 
+        `widht`: largeur du drapeau.
+        La tortue est positionnée à un sommet du drapeau
+        la tortue pointe vers le coté de la largeur du drapeau
+    post:
+        Le drapeau  est dessiné dans le quart supérier droit par rapport à la tortue
+        La tortue est de retour en position et orientation d'origine dans le coin inferieur gauche 
+      git  du drapeau
+    """
+    hv_three_color_flag(width,"blue","white","red","v")
+
+
 def beautifull_disposition():
     dutch_flag(300)
-    tortue.position(350, 0)
+    tortue.setposition(350, 0)
     new_belgian_flag(300)
-    tortue.position(0,-300)
+    tortue.setposition(0,-250)
     german_flag(300)
-    tortue.position(350,-300)
+    tortue.setposition(350,-250)
     european_flag(300)    
+    tortue.setposition(0, -500)
+    luxembourg_flag(300)
+    tortue.setposition(350, -500)
+    french_flag(300)    
 
 #rectangle(300,100,"green")
 #belgian_flag(300)
