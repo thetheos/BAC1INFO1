@@ -2,7 +2,7 @@ import turtle                # module des graphiques tortue
 
 
 tortue = turtle.Turtle()     # créer une nouvelle tortue
-tortue.speed(2)      # tracé rapide
+tortue.speed(0)      # tracé rapide
 wn = turtle.Screen()
 
 def square(size, color):
@@ -103,6 +103,53 @@ def hv_three_color_flag(width, color1, color2, color3, disposition):
         tortue.left(90)
 
 
+def drp_center(drp_width):
+    """
+    pre: turtle instance
+    post: go to center of flag
+    """
+    tortue.penup()
+    tortue.color("red")
+    tortue.setposition(tortue.xcor()+drp_width/2, tortue.ycor()+(drp_width*2)/6)
+    drp_draw_stars(drp_width) #call draw stars
+
+
+def drp_draw_stars(drp_width):
+    """
+        pre: turtle instance, size>0 drp_width
+        post: position the turtle in a dodecagon
+    """
+    radius = (2/9) * drp_width
+    tortue.right(90) #position the turtle where the circle has to be drawn
+    tortue.forward(radius)
+    tortue.left(90)
+    tortue.color("yellow")
+    for i in range(0,12): #the 12 corner for the 12 stars
+        draw_star(drp_width)
+        tortue.circle(radius,30)
+    return
+
+
+def draw_star(drp_width):
+    """
+        pre: turtle instance, size>0 (lenght of the flag)
+        post: draw a yellow start where the turtle is with the branch pointing up
+    """
+    size = (drp_width/35.343458848) # (27×(1+cos(72))) = 35.34 represents 1/9 of the height
+    previous_heading = tortue.heading()
+    tortue.setheading(0) #Make the star look 12 o clock
+    tortue.fillcolor("yellow")
+    tortue.begin_fill()
+    for i in range(5):
+        tortue.forward(size)
+        tortue.right(140)
+        tortue.forward(size)
+        tortue.right(72-140)
+    tortue.end_fill()
+    tortue.setheading(previous_heading)
+    return
+
+
 def belgian_flag(width):
     """Trace le drapeau belge de largeur width. Le rapport L/H = 3/2.
     pre: 
@@ -160,17 +207,44 @@ def german_flag(width):
     post:
         Le drapeau  est dessiné dans le quart supérier droit par rapport à la tortue
         La tortue est de retour en position et orientation d'origine dans le coin inferieur gauche 
-        du drapeau
+      git  du drapeau
     """
     hv_three_color_flag(width,"yellow","red","black","h")
 
+def european_flag(width):
+    """Trace le drapeau européen de largeur width. Le rapport L/H = 3/2.
+    pre: 
+        `widht`: largeur du drapeau.
+        La tortue est positionnée à un sommet du drapeau
+        la tortue pointe vers le coté de la largeur du drapeau
+    post:
+        Le drapeau  est dessiné dans le quart supérier droit par rapport à la tortue
+        La tortue est de retour en position et orientation d'origine dans le coin inferieur gauche 
+      git  du drapeau
+    """
+    hv_three_color_flag(width,"blue","blue","blue","h")
+    drp_center(width)
+
+
+def beautifull_disposition():
+    dutch_flag(300)
+    tortue.position(350, 0)
+    new_belgian_flag(300)
+    tortue.position(0,-300)
+    german_flag(300)
+    tortue.position(350,-300)
+    european_flag(300)    
 
 #rectangle(300,100,"green")
 #belgian_flag(300)
 #three_color_flag(300,"black","yellow","red")
 #hv_three_color_flag(300,"black","yellow","red","h")
-dutch_flag(300)
-new_belgian_flag(300)
-german_flag(300)
+#dutch_flag(300)
+#new_belgian_flag(300)
+#german_flag(300)
+#european_flag(300)
+beautifull_disposition()
+
+
 
 wn.mainloop()

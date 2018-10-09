@@ -70,14 +70,12 @@ def draw_star(t, size):
     """
     size = (size/35.343458848) # (27×(1+cos(72))) = 35.34 represents 1/9 of the height
     previous_heading = t.heading()
-    t.setheading(-10) #Make the star look 12 o clock
+    #t.setheading(-10) #Make the star look 12 o clock
     t.fillcolor("yellow")
     t.begin_fill()
     for i in range(5):
         t.forward(size)
-        t.right(120)
-        t.forward(size)
-        t.right(72-120)
+        t.right(144)
     t.end_fill()
     t.setheading(previous_heading)
     return
