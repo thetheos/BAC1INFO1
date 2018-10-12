@@ -262,9 +262,9 @@ def beautifull_disposition():
     german_flag(300)
     tortue.setposition(350,-250)
     european_flag(300)    
-    tortue.setposition(0, -500)
+    tortue.setposition(-350, 0)
     luxembourg_flag(300)
-    tortue.setposition(350, -500)
+    tortue.setposition(-350, -250)
     french_flag(300)    
 
 #rectangle(300,100,"green")
