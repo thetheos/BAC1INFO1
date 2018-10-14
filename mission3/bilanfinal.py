@@ -10,7 +10,7 @@ def chiffres_pairs(n):
         return True
     else:
         return False
-    return not int(len(str(n))) % 2
+    #return not int(len(str(n))) % 2
 
 n = 0
 while True :
