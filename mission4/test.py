@@ -32,7 +32,7 @@ def test_positions():
     test(bioinfo.positions("attggcg","g")==[3,4,6])
 
 def test_distanceH():
-    
+    return
 
 test_is_adn()
 test_positions()
