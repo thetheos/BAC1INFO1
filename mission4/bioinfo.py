@@ -17,12 +17,20 @@ def positions(s, p):
     p = p.lower()
     occurences = []
     pos= 0
+    while pos < len(s):
+        if s[pos:(pos+len(p))] == p: #Verifie si la chaine en partant de c, de longeur len(p) correspond au string p
+            occurences.append(pos)
+            pos += len(p)
+        else:
+            pos += 1
+    return occurences
+"""
     for c in s:
         if c == p[0]:                       #Si le premier caractère de p correspond au caractère c
             if s[pos:(pos+len(p))] == p:    #Verifie si la chaine en partant de c, de longeur len(p) correspond au string p
                 occurences.append(pos)
         pos += 1
-    return occurences
+"""
 
 def distance_h(s, p):
     """
@@ -41,5 +49,5 @@ def distance_h(s, p):
     return dist
 
 #print(is_adn(""))
-#print(positions("atgcatgatgatg","ATG"))
+print(positions("atgcatgatgatg","ATG"))
 print(distance_h("atgac","aggag"))
