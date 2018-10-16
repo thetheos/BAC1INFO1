@@ -1,3 +1,7 @@
+"""
+Réalise par Théo Vanden Driessche et Simon Van Roy en octobre 2018
+"""
+
 def is_adn(s):
     if s =="":
         return False
@@ -7,6 +11,7 @@ def is_adn(s):
         else:
             return False
     return True
+
 
 def positions(s, p):
     """
@@ -24,13 +29,7 @@ def positions(s, p):
         else:
             pos += 1
     return occurences
-"""
-    for c in s:
-        if c == p[0]:                       #Si le premier caractère de p correspond au caractère c
-            if s[pos:(pos+len(p))] == p:    #Verifie si la chaine en partant de c, de longeur len(p) correspond au string p
-                occurences.append(pos)
-        pos += 1
-"""
+
 
 def distance_h(s, p):
     """
