@@ -5,3 +5,9 @@ print(l[0])
 print(l[0].upper())
 #third
 print(l.title())
+
+print(l.split("-"))
+
+for i in ["Louvain","La","Neuve"]:
+    print(i)
+

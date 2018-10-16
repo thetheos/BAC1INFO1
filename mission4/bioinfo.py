@@ -48,5 +48,5 @@ def distance_h(s, p):
     return dist
 
 #print(is_adn(""))
-print(positions("atgcatgatgatg","ATG"))
+#print(positions("atgcatgatgatg","ATG"))
 print(distance_h("atgac","aggag"))
