@@ -285,6 +285,7 @@ all_communes = [("Aalst", (575061.8368696974, 5644396.819551783)),("Aalter", (53
     ("Zwijndrecht", (593722.544393318, 5673844.430093279))]
 
 
+
 def verify_order(communes):
     sorted_communes = communes[:] #clone the list. If [:] not present then it only points 
     communes.sort()
@@ -293,6 +294,12 @@ def verify_order(communes):
     else:
         return False
 
+def in_list(l, all_communes):
+    """if type(l) == str:
+        return l in all_communes
+    else:
+    """
+    return l in all_communes[:][0]
 
 def coordinate(commune, all_communes):
     """
@@ -360,18 +367,28 @@ def distance_matrix(communes, all_communes):
     Zwalm       ****        0       ****  
         |
     Kortijk     ****        ****    0
-    
+
     """
+    """ 
+    #OLD CODE More funny in one line
     dist_matrix = [[ 0 for i in range(len(communes))] for l in range(len(communes))]
+    print(one_matrix)
     for pos, elm in enumerate(communes):
         for dist_pos, dist_elm in enumerate(communes):
             dist_matrix[dist_pos][pos] = distance(elm, dist_elm, all_communes)
     return dist_matrix
+    """
+
+    return [[distance(elm, dist_elm, all_communes) for dist_elm in communes] for elm in communes]
 
 #print(distance("Zwalm","Mouscron",all_communes))
 #print(distances("Mouscron",all_communes))
 #print(closest("Kortrijk", all_communes, 7 ))
 print(distance_matrix(["Mouscron","Zwalm","Kortrijk"],all_communes))
+print(distance("Mouscron","Zwalm",all_communes))
+print(distance("Mouscron","Kortrijk",all_communes))
+print(in_list("Mouscron",all_communes))
+print(in_list(["Mouscron","Zwalm","Kortrijk"],all_communes))
 """
 print(coordinate("Zwalm",all_communes))
 print(coordinate("Mouscron",all_communes))
