@@ -56,3 +56,14 @@ def iterative_levenshtein(s, t):
  
     return dist[row][col]
 print(iterative_levenshtein("bancontact", "telephone"))
+
+
+def smallest_ld(word, l):
+    ld = 100
+    nearest = []
+    for i in l:
+        n_ld = iterative_levenshtein(word, i)
+        if ld > n_ld:
+            ld = nld
+            nearest = [(ld, i)]
+    return nearest
