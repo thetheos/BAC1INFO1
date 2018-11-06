@@ -9,35 +9,7 @@ def ui_treatment(cmds):
     """
     if cmds[0] == "file":
         selectfile(cmds[1:])
-    elif cmds[0] == "info":
-        retrieve_info()
-    elif cmds[0] == "dictionnary" and len(cmds) == 1:
-        dictionnary()
-    elif cmds[0] == "search" and len(cmds) == 2:
-        search(cmds[1])
-    elif cmds[0] == "search" and len(cmds)>2:
-        print("You can't search more than one word at a time!")
-    elif cmds[0] == "pika" and len(cmds) == 1:
-        pikachu()
-    elif cmds[0] == "sum" and len(cmds) >1:
-        sumation(cmds)
-    elif cmds[0] == "sum" and len (cmds) == 1:
-        print("""Argument needed! Expected syntax: Numbers separated by spaces""")
-    elif cmds[0] == "avg" and len(cmds) > 1:
-        avg(cmds[1:])
-    elif cmds[0] == "avg" and len(cmds) == 1:
-        print("""Argument needed! Expected syntax: Numbers separated by spaces""")   
-    elif cmds[0] == "help" and len(cmds) == 1:
-        help()
-    elif cmds[0] == "product" and len(cmds) == 1:
-        print("""Argument needed! Expected syntax: Numbers separated by spaces""")
-    elif cmds[0] == "product" and len(cmds) > 1:
-        product(cmds[1:])
-    elif cmds[0] == "morsecode" and len(cmds) >1:
-        morsecode(cmds[1:])
-    else:
-        print("I don't know that command... Yet? Teach me machine learning so I can learn it!")
-
+    
                                               
 def dictionnary():
     """

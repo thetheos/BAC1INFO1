@@ -1,7 +1,23 @@
+global file_name
+
+def cmd_manager(cmds):
+    """
+        pre: Prend une liste de commande
+        post: Execute la fonction demandée dans la liste
+    """
+
+    
+     
+
+
 def readfile(filename):
+    """
+        Open the file, return a list of all the lines in this file
+    """
     try:
         f = open(filename, "r")
         lines_lst = [line for line in f]
+        f.close()
         return lines_lst
     except IOError:
         print("Error while opening the file")
@@ -15,12 +31,16 @@ def readfile(filename):
     
 
 def get_words(line):
-    return [word.lower().strip(". ") for word in line.split(" ")]
+    """
+    Return a list of all the words in a line without punctionation
+    """
+    return [word.lower().strip(".!?%+-# ") for word in line.split(" ")]
 
 
 def create_index(filename):
     """
     Return an index dictionary of all the words contained in a file.
+    In which line the words is contained
     """
     index = {}
     
@@ -68,7 +88,6 @@ def get_lines(words, index):
             line_pos_t.append(pos)
     return line_pos_t
 
-
 def get_words_same_line(line, index):
     keys_list = []
     for key in index:
@@ -77,11 +96,32 @@ def get_words_same_line(line, index):
                 keys_list.append(key)
     return keys_list
 
-#print(readfile("episodeIV_dialog.txt"))
 
+file_name = ""
+while True:
+    if file_name == "":
+        cmds = []
+        cmds = input("Enter the filename to begin or enter quit: ")
+        cmds_list = [i for i in cmds.split(" ")]
+        file_name = cmds_list[0]
+        if readfile(file_name) == -1:
+            file_name = ""
+    else:
+        if cmds_list[0] in ["q","quit","exit","exit()"]:
+            print("Have a good night")
+            break
+        words = input("Enter words separate by a space: ").split(" ")
 
-print(get_words("Turmoil has engulfed the Galactic Republic."))
+        if words[0] in ["q","quit","exit","exit()"]:
+            print("Have a good night")
+            break
+        index = create_index(file_name)
+        line_lst = readfile(file_name)
+        #print(index)
+        for line_number in get_lines(words, index):
+            print(line_lst[line_number].strip())
 
-print(create_index("test_example_1.txt"))
-#print(get_words_same_line(1, create_index("test_example_1.txt")))
-print(get_lines(["this","has","coco"], create_index("test_example_1.txt")))
+        #print(get_lines(words, create_index(file_name)))
+        
+    
+ 
