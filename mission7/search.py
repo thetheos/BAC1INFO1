@@ -1,14 +1,5 @@
 global file_name
 
-def cmd_manager(cmds):
-    """
-        pre: Prend une liste de commande
-        post: Execute la fonction demandée dans la liste
-    """
-
-    
-     
-
 
 def readfile(filename):
     """
@@ -34,7 +25,7 @@ def get_words(line):
     """
     Return a list of all the words in a line without punctionation
     """
-    return [word.lower().strip(".!?%+-# ") for word in line.split(" ")]
+    return [word.lower().strip(".!?%+-#,;: ") for word in line.split(" ")]
 
 
 def create_index(filename):
@@ -70,6 +61,9 @@ def create_index(filename):
 
 
 def get_lines(words, index):
+    """
+    Takes a list of words and an index. Return the lines numbers where all the words contained in words list is in this line
+    """
     for word in words:
         if word not in index:
             print("This word isn't in the index: " + word)
@@ -89,6 +83,9 @@ def get_lines(words, index):
     return line_pos_t
 
 def get_words_same_line(line, index):
+    """
+    Takes line number and an index. Return all the words that are in this line
+    """
     keys_list = []
     for key in index:
         for i in index[key].keys():
@@ -101,13 +98,16 @@ file_name = ""
 while True:
     if file_name == "":
         cmds = []
-        cmds = input("Enter the filename to begin or enter quit: ")
+        cmds = input("Enter the filename to begin or enter quit(to enter test mode enter test): ")
         cmds_list = [i for i in cmds.split(" ")]
         file_name = cmds_list[0]
         if readfile(file_name) == -1:
             file_name = ""
+        if cmds_list[0] in ["q","quit","exit","exit()","test"]:
+            print("Have a good night")
+            break
     else:
-        if cmds_list[0] in ["q","quit","exit","exit()"]:
+        if cmds_list[0] in ["q","quit","exit","exit()","test"]:
             print("Have a good night")
             break
         words = input("Enter words separate by a space: ").split(" ")
