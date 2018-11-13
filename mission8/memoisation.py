@@ -1,20 +1,45 @@
 import time
 from functools import wraps
+global mem_dic
+mem_dic = {}
+alreadyknown = {0: 0, 1: 1} #used in optimized fibonnaci sequence
 
 
 def time_it(f):
+    """
+        Prend une fonction en argument et retourner une nouvelle fonction
+        Sert de décorateur
+    """
     #we could put *args instead of x to handle the case when the function f has multiple parameters
     t1 = 0
     t0 = 0
-    def wrapped(x):
+    def wrapped(*arg):
         t0 = time.clock()
-        result = f(x)
+        result = f(*arg)
         t1 = time.clock()
         print("ellapsed time: {0}".format(t1-t0))
         return result
-    return wrapped,t1-t0
+    return wrapped
 
 
+def memoization(fun, arg):
+    """
+    Function memoization prennant une fonction en argument et l'argument de la fonction
+    """
+    if fun not in mem_dic: #check si la function est déja dans le dico
+        mem_dic[fun] = {}   #sinon ajoute l'entree
+    if arg not in mem_dic[fun]: #check si la valeur est deja dans le dico de la fonction
+        mem_dic[fun][arg] = fun(arg) #sinon ajoute cette valeur
+    return mem_dic[fun][arg] #retourne la valeur demande
+
+
+def memoise(f):
+    def new_f(x):
+        return memoization(f,x)
+    return new_f
+
+
+@memoise
 def fib_rec(n):
     """
       Computes numbers in the Fibonacci sequence 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
@@ -31,24 +56,65 @@ def fib_rec(n):
     return t
 
 
+def optimize_fib_rec(n):
+    """
+    Fib récursive avec memoise 
+    """
+    if n not in alreadyknown:
+        new_value = optimize_fib_rec(n-1) + optimize_fib_rec(n-2)
+        alreadyknown[n] = new_value
+    return alreadyknown[n]
+
+
 def fib_it(n):
+    """
+        Fonction itérative de fibonnaci
+    """
     a,b,c=0,1,0
+    if n == 1:
+        return 0
     for i in range(n-1):
-        c = b+a
-        a = b
-        b = c    
+        c,a,b=b+a,b,b+a
     return c
 
 
-def time_dif_fibo(n):
-    print("The time difference to compute the {0}'th term is: {}s".format())
+def fib_it_cul(n):
+    """
+        Version de GUIGUI
+    """
+    compteur = [0,1,1]
+    for i in range(n-2):
+        compteur.append(compteur[-1] + compteur[-2])
+    return compteur[-1]              
+            
 
-#print(time_it(fib))
-r = time_it(fib_rec)
-result = r[0](20)
-time = r[1]
-print(result,time)
-time_it(fib_it)[0](20)
+def fact_mem(n):
+    """
+    Fonction calculant les factorielle
+    """
+    if n == 0:
+        return 1
+    else:
+        return n * memoization(fact_mem, n-1)
 
 
-#print("the result: {0} has been computed in {1:.2f}s".format(n,t1-t0))
+def fibo_mem(n):
+    """
+    Utile juste pour calculer plus facile la suite de fibonacci
+    """
+    return memoization(fib_rec,n)
+
+
+def exec_time(f,x):
+    """
+    Fonction juste la pour faire plaisir
+    """
+    time_it(f)(x)
+    return
+
+print(fibo_mem(200))
+print(fact_mem(12))
+
+
+#print(time_it(memoization)(fib_it,57))
+#print(time_it(memoization)(fib_it,58))
