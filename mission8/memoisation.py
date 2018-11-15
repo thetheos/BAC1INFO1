@@ -112,9 +112,21 @@ def exec_time(f,x):
     time_it(f)(x)
     return
 
-print(fibo_mem(200))
-print(fact_mem(12))
-
-
+#print(fibo_mem(200))
+#print(fact_mem(12))
+"""
+print(time_it(fib_rec)(10))
+print(time_it(fib_rec)(15))
+print(time_it(fib_rec)(20))
+print(time_it(fib_rec)(25))
+print(time_it(fib_rec)(30))
+print(time_it(fib_rec)(35))
+"""
+time_it(fib_it)(15)
+time_it(fib_it)(35)
+time_it(fib_it)(55)
+time_it(fib_it)(75)
+print(time_it(fib_it)(2000))
+time_it(fib_rec)(300)
 #print(time_it(memoization)(fib_it,57))
 #print(time_it(memoization)(fib_it,58))
