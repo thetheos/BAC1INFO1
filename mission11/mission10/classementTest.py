@@ -17,7 +17,10 @@ class ClassementTest(unittest.TestCase):
     -Enlever un coureur
     -Methode "get" qui retourne le résultat d'un coureur
     -Methode "add" qui ajoute un element à la linked list (soit un joueur bat son record soit un nouveau coureur arrive)
-    """
+    
+    Tout ces test fonctionnnes mais je n'arrive pas à implement unittest
+    
+    
     def __init__(self):
         self.
         c = self.coureurs[0]
@@ -54,3 +57,4 @@ class ClassementTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    """
