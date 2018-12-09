@@ -12,7 +12,6 @@ def directories(path):
     for fil in os.scandir(path):
         if fil.is_dir():
             dir_lst.append(fil.name)
-            
     return dir_lst
 
 def subfiles(dir):
