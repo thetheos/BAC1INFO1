@@ -294,12 +294,6 @@ def verify_order(communes):
     else:
         return False
 
-def in_list(l, all_communes):
-    """if type(l) == str:
-        return l in all_communes
-    else:
-    """
-    return l in all_communes[:][0]
 
 def coordinate(commune, all_communes):
     """
@@ -354,7 +348,7 @@ def closest(commune, all_communes, k):
     """
     dist = distances(commune,all_communes)
     dist.sort()
-    return [ dist[i][1] for i in range(k+1) if dist[i][1] != commune]
+    return [ dist[i][1] for i in range(k+1) if dist[i][1] != commune] #prend k+1 car on ne prend pas la commune elle même
 
 
 def distance_matrix(communes, all_communes):
@@ -381,14 +375,15 @@ def distance_matrix(communes, all_communes):
 
     return [[distance(elm, dist_elm, all_communes) for dist_elm in communes] for elm in communes]
 
+
 #print(distance("Zwalm","Mouscron",all_communes))
 #print(distances("Mouscron",all_communes))
-#print(closest("Kortrijk", all_communes, 7 ))
+#print(closest("Jurbise", all_communes, 2 ))
+#print(closest("Anhe", all_communes, 7 ))
 print(distance_matrix(["Mouscron","Zwalm","Kortrijk"],all_communes))
-print(distance("Mouscron","Zwalm",all_communes))
-print(distance("Mouscron","Kortrijk",all_communes))
-print(in_list("Mouscron",all_communes))
-print(in_list(["Mouscron","Zwalm","Kortrijk"],all_communes))
+#print(distance("Mouscron","Zwalm",all_communes))
+#print(distances("Mouscron", all_communes))
+
 """
 print(coordinate("Zwalm",all_communes))
 print(coordinate("Mouscron",all_communes))
